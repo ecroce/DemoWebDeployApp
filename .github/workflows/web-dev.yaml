@@ -28,11 +28,11 @@ jobs:
       - name: 📦 Install dependencies
         run: yarn install
 
-      - name: Build Application
-        run: expo export:web
-
       # - name: Build Application
-      #   run: expo build:web
+      #   run: expo export:web
+
+      - name: Build Application
+        run: expo build:web
 
       - name: Create dist folder to deploy
         run: |
