@@ -1,11 +1,6 @@
 name: Web Deploy - Dev
 on:
   workflow_dispatch:
-  push: # necessary the first time to register the workflow
-on:
-  push:
-    branches:
-      - main
 
 env:
   ENVIRONMENT: dev
