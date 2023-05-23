@@ -3,7 +3,7 @@
   "displayName": "DemoWebDeployApp",
   "expo": {
     "name": "DemoWebDeployApp",
-    "slug": "DemoWebDeployApp",
+    "slug": "demowebdeployapp",
     "scheme": "demowebdeployapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -54,6 +54,12 @@
     },
     "plugins": [
       "expo-localization"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "333bd13f-0251-44c4-b0f6-5db83d3979d6"
+      }
+    },
+    "owner": "elliecroce"
   }
 }

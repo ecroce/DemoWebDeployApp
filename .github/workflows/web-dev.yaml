@@ -1,0 +1,49 @@
+name: Web Deploy - Dev
+on:
+  workflow_dispatch:
+  push: # necessary the first time to register the workflow
+on:
+push:
+  branches:
+    - main
+
+env:
+  ENVIRONMENT: dev
+
+jobs:
+  build-artifacts:
+    name: Quality Checks and Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: yarn
+
+      - name: Setup EAS
+        uses: expo-github-action@v8
+        with:
+          expo-version: latest
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build Application
+        run: expo export:web
+
+      # - name: Build Application
+      #   run: expo build:web
+
+      - name: Create dist folder to deploy
+        run: |
+          mkdir -p dist
+          cp -a web-build/. dist/
+
+# Rest of the client's code to deploy dist here
